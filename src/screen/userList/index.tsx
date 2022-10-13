@@ -24,26 +24,31 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>): Partial<any> 
 
 const UserListScreen: FC<Props> = ({ getUserList }) => {
     const [userArr, setUserArr] = useState<Array<any>>([])
-    
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
     const { userList } = useSelector((state: any) => state.home)
     useEffect(() => {
         getUserList && getUserList({ page: 1 })
     }, [])
 
     useEffect(() => {
+        setIsLoading(false)
         if (userArr && userArr.length > 0) {
-            setUserArr([...userArr, ...userList.data])
+            let refineArray: any = [...userArr, ...userList.data]
+            setUserArr(refineArray)
         } else {
             setUserArr(userList.data)
         }
     }, [userList])
 
     const loadMore = () => {
+        if (isLoading) {
+            return
+        }
         let currentPage = userList.page + 1
-        console.log(currentPage);
-        console.log(currentPage <= userList.total_pages);
         if (currentPage <= userList.total_pages) {
-            getUserList && getUserList({ page: 2 })
+            setIsLoading(true)
+            getUserList && getUserList({ page: currentPage })
         }
     }
 
@@ -55,7 +60,7 @@ const UserListScreen: FC<Props> = ({ getUserList }) => {
                 renderItem={UserItem}
                 keyExtractor={(item, index) => index.toString()}
                 onEndReached={loadMore}
-                onEndReachedThreshold={1}
+                onEndReachedThreshold={0.1}
             />
         </Container>
     )
