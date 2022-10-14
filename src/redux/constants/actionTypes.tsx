@@ -5,6 +5,10 @@ const ACTION_TYPES = {
    SPLASH: {
     SPLASH_LAUNCHED: 'SPLASH_LAUNCHED',
   },  
+   // App  Actions
+   APP: {
+    APP_LOADING: 'APP_LOADING',
+  },  
   // Login Screen Actions
     LOGIN: {
       LOGIN_DATA_FETCHED: 'LOGIN_DATA_FETCHED',

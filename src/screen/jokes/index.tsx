@@ -1,5 +1,5 @@
 import React, { FC, useEffect, Dispatch } from 'react';
-import { Button, TextInput, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 //style
 import styles from './styles';
 
@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>): Partial<any> 
 const JokesScreen: FC<Props> = ({ getRandomJoks }) => {
 
     const { jokes } = useSelector((state: any) => state.home)
-
 
     useEffect(() => {
         getNewJoks()

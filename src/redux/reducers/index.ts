@@ -7,12 +7,14 @@ import { AuthState, HomeState, IAction } from '../types/IAction';
 
 import auth from './auth';
 import home from './home';
+import app from './app';
 
 export interface RootState {
+   app: any;
    auth: AuthState;
    home: HomeState;
 }
 
 export default combineReducers<RootState, IAction<any>>({
-   auth, home
+   app, auth, home
 });
