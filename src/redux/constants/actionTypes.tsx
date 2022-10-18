@@ -8,6 +8,7 @@ const ACTION_TYPES = {
    // App  Actions
    APP: {
     APP_LOADING: 'APP_LOADING',
+    NETWORK: 'IS_NETWORK_AVAILABLE',
   },  
   // Login Screen Actions
     LOGIN: {

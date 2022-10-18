@@ -1,6 +1,5 @@
 import API from "../../services/api";
 import { ACTION_TYPES } from "../constants/actionTypes";
-import { RootState } from "../reducers";
 import config from "../../config";
 import { AppDispatch } from "../store";
 import { encodedString } from "../../utils/Halper";

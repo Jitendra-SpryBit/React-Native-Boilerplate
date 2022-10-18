@@ -8,14 +8,19 @@ export interface IAction<T> extends Action {
 export interface AuthState {
   loggedIn: boolean;
   isAppLaunch: boolean;
-  user:any,
-  errorMassage:Record<string,string>
+  user: any,
+  errorMassage: Record<string, string>
 }
 
 export interface HomeState {
-  userList: Record<string,any>[];
-  errorMassage:Record<string,string>
-  jokes:string
+  userList: Record<string, any>[];
+  errorMassage: Record<string, string>
+  jokes: string
+}
+
+export interface AppState {
+  isLoading: boolean;
+  isNetworkAvailable: boolean | undefined
 }
 
 

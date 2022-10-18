@@ -3,7 +3,7 @@ import { ACTION_TYPES } from "../constants/actionTypes";
 import { RootState } from "../reducers";
 import config from "../../config";
 import { AppDispatch } from "../store";
-import { loading } from "./app";
+import { showHideLoader } from "./app";
 
 
 export const splashLunached = () => async (dispatch: AppDispatch, getState: () => RootState) => {
@@ -11,7 +11,7 @@ export const splashLunached = () => async (dispatch: AppDispatch, getState: () =
 };
 
 export const loginUser = (params: any) => async (dispatch: AppDispatch, getState: () => RootState) => {
-    dispatch({ type: ACTION_TYPES.APP.APP_LOADING, data: true })
+    showHideLoader(true, dispatch)
     try {
         const data = await API.post(config.apis.login, params)
         const response: any = await data.json()
@@ -24,8 +24,6 @@ export const loginUser = (params: any) => async (dispatch: AppDispatch, getState
     } catch (error) {
         dispatch({ type: ACTION_TYPES.LOGIN.LOGIN_FAILED, data: "error" })
     } finally {
-        dispatch({ type: ACTION_TYPES.APP.APP_LOADING, data: false })
+        showHideLoader(false, dispatch)
     }
-
-
 };

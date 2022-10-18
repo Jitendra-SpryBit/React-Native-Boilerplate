@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './src/redux/store';
 import StackNavigator from './src/navigation';
 import Loading from './src/components/Loader';
+import {NetworkInfo} from './src/components';
 
 const App: () => Node = () => {
 
@@ -12,6 +13,7 @@ const App: () => Node = () => {
     <Provider store={store}>
       <StackNavigator />
       <Loading />
+      <NetworkInfo/>
     </Provider>
   );
 };

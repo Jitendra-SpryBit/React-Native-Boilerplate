@@ -3,14 +3,14 @@
  * Import all and add to combineReducers to use any among whole app
  */
 import { combineReducers } from 'redux';
-import { AuthState, HomeState, IAction } from '../types/IAction';
+import { AuthState, HomeState, IAction,AppState } from '../types/IAction';
 
 import auth from './auth';
 import home from './home';
 import app from './app';
 
 export interface RootState {
-   app: any;
+   app: AppState;
    auth: AuthState;
    home: HomeState;
 }
